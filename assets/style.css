@@ -41,3 +41,8 @@
 .col-sm-3 {
     height: 100vh;
 }
+
+.currentWeather {
+    border: 1px solid #C1C1C1 ;
+    margin-top: 5%;
+}
