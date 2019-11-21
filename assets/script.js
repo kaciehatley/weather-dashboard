@@ -77,7 +77,7 @@ function renderWeather() {
         currentWeatherBox.appendChild(humidity);
         currentWeatherBox.appendChild(wind);
 
-        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=8f851cd1ee25a4bb8996f7bb698edf09";
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=8f851cd1ee25a4bb8996f7bb698edf09";
         console.log(uvURL);
 
         $.ajax({
