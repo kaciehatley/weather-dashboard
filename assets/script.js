@@ -123,7 +123,7 @@ function renderWeather() {
             currentWeatherBox.appendChild(uvIndex);
 
             // Five day forecast api url
-            var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityValue + "&mode=json&appid=8f851cd1ee25a4bb8996f7bb698edf09"
+            var fiveDayURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityValue + "&mode=json&appid=8f851cd1ee25a4bb8996f7bb698edf09"
 
             // Sets day to current day by setting variable equal to zero
             var day=0;
@@ -198,5 +198,12 @@ function renderHistory() {
 }
 
 searchIcon.addEventListener("click", renderWeather);
+
+var clearBtn = document.querySelector(".clear");
+
+clearBtn.addEventListener("click", function() {
+    window.localStorage.clear();
+    window.location.reload();
+})
 
 
