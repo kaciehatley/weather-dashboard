@@ -43,10 +43,13 @@
 }
 
 .currentWeather {
-    border: 1px solid #C1C1C1 ;
+    /* border: 1px solid #C1C1C1 ; */
     margin-top: 20px;
     padding: 20px;
-    width: 95%;
+    width: 45%;
+    background-color: #AFB0B1 ;
+    border-radius: 5px;
+    color: black;
 }
 
 .weatherIcon {
@@ -54,20 +57,19 @@
 }
 
 .date {
-    display: inline-block;
+    display: block;
     padding-right: 10px;
 }
 
 .cityName {
     display: inline-block;
-    padding-right: 22px;
+    padding-right: 10px;
 }
 
 .uvIndex {
-    background-color: red;
     padding: 8px;
     border-radius: 10px;
-    color: white;
+    color: black;
     display: inline-block;
 }
 
@@ -80,10 +82,15 @@ h2 {
 }
 
 .fiveDayBlock {
-    background-color: blue;
+    background-color: #6891CD  ;
     width: 17%;
-    margin: 0 1%;
+    margin: 0 1% 30px 1%;
     display: inline-block;
     color: white;
-    padding: 10px;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.btn {
+    margin: 12px 20px;
 }
