@@ -10,6 +10,8 @@ var userHistory = [];
 // var storedCities = JSON.parse(localStorage.getItem("userHistory"));
 // userHistory.push(storedCities);
 
+renderHistory(); 
+
 // Current city value
 var cityValue = "";
 
@@ -121,7 +123,7 @@ function renderWeather() {
             currentWeatherBox.appendChild(uvIndex);
 
             // Five day forecast api url
-            var fiveDayURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityValue + "&mode=json&appid=8f851cd1ee25a4bb8996f7bb698edf09"
+            var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityValue + "&mode=json&appid=8f851cd1ee25a4bb8996f7bb698edf09"
 
             // Sets day to current day by setting variable equal to zero
             var day=0;
@@ -140,7 +142,7 @@ function renderWeather() {
 
                     // Defining API values in variables
                     var forecastDate = (response.list[day].dt_txt.substring(5, 10));
-                    var forecastIcon = "http://openweathermap.org/img/wn/" + response.list[day].weather[0].icon + ".png";
+                    var forecastIcon = "https://openweathermap.org/img/wn/" + response.list[day].weather[0].icon + ".png";
                     var forecastKel = (response.list[day].main.temp);
                     var forecastTemp = ((forecastKel - 273.15) * (9 / 5) + 32).toFixed(0);
                     var forecastHumidity = (response.list[day].main.humidity);
@@ -175,7 +177,25 @@ function renderWeather() {
             renderWeather();
         })
     }
+    
     )};
+
+function renderHistory() {
+    var storedCities = JSON.parse(localStorage.getItem("userHistory"));
+    userHistory.push(storedCities);
+    console.log(userHistory);
+
+    if (storedCities == null) {
+        return;
+    } else {
+    for (var i=0; i < userHistory.length; i++) {
+        var historyBlock = document.createElement("div");
+        historyBlock.setAttribute("class", "historyBlock");
+        historyBlock.innerHTML = userHistory[i];
+        searchHistory.prepend(historyBlock);
+    }
+}
+}
 
 searchIcon.addEventListener("click", renderWeather);
 
