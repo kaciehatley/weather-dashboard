@@ -7,13 +7,16 @@ currentWeatherBox.setAttribute("style", "display: none");
 
 // Array for user search history
 var userHistory = [];
-// var storedCities = JSON.parse(localStorage.getItem("userHistory"));
-// userHistory.push(storedCities);
 
-renderHistory(); 
+// renderHistory(); 
 
 // Current city value
 var cityValue = "";
+
+// Function that stores "userHistory"
+function stringify() {
+    localStorage.setItem("userHistory", JSON.stringify(userHistory));
+}
 
 // Function that renders current weather information
 function renderWeather() {
@@ -33,8 +36,9 @@ function renderWeather() {
     cityValue = inputBox.value;
     userHistory.push(cityValue);
 
-    // Stores every entry to "userHistory"
-    localStorage.setItem("userHistory", JSON.stringify(userHistory));
+    // stringify();
+
+    window.localStorage.clear();
     
     // Current weather API URL
     var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q="+ inputBox.value + "&appid=8f851cd1ee25a4bb8996f7bb698edf09";
@@ -176,31 +180,41 @@ function renderWeather() {
             console.log(event.target.innerHTML);
             renderWeather();
         })
+        inputBox.value = "";
     }
-    
     )};
 
-function renderHistory() {
-    var storedCities = JSON.parse(localStorage.getItem("userHistory"));
-    userHistory.push(storedCities);
-    console.log(userHistory);
+// function renderHistory() {
+//     var storedCities = JSON.parse(localStorage.getItem("userHistory"));
 
-    if (storedCities === null) {
-        return;
-    } else {
-    for (var i=0; i < userHistory.length; i++) {
-        var historyBlock = document.createElement("div");
-        historyBlock.setAttribute("class", "historyBlock");
-        historyBlock.innerHTML = userHistory[i];
-        searchHistory.prepend(historyBlock);
-    }
-}
-}
+//     if (storedCities === null) {
+//         console.log("Nothing here!");
+//     } else {
+//         userHistory.push(storedCities);
+//         localStorage.setItem("userHistory", JSON.stringify(userHistory));
+//     for (var i=0; i < userHistory.length; i++) {
+//         var historyBlock = document.createElement("div");
+//         historyBlock.setAttribute("class", "historyBlock");
+//         historyBlock.innerHTML = storedCities[i];
+//         searchHistory.prepend(historyBlock);
+//     }
+// }
+// }
 
+// Click and "enter" button event listeners for rendering weather for city searched
 searchIcon.addEventListener("click", renderWeather);
+document.addEventListener('keypress', function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 13) { 
+        e.preventDefault();
+        renderWeather();
+    }
+});
 
+// Clears search history
 var clearBtn = document.querySelector(".clear");
 
+// Event listener for clear button
 clearBtn.addEventListener("click", function() {
     window.localStorage.clear();
     window.location.reload();
