@@ -1,5 +1,7 @@
 # Weather Dashboard
 
+[Link to deployed project](https://kaciehatley.github.io/weather-dashboard)
+
 ## About the Project
 This day planner was created with the intention of helping the user view current weather conditions, as well as the forecast for the 5 coming days. Users can also view past cities searched. The project utilizes HTML, CSS, JavaScript and third-party APIs such as Open Weather. This is the sixth project built as a part of the UNCC Coding Bootcamp.
 
